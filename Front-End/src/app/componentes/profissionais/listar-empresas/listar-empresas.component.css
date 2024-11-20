@@ -1,0 +1,31 @@
+.listar-empresas{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  height: auto;
+  padding: 1vh 1vw 1vh 1vw;
+  width: 98%;
+}
+
+.campo-busca{
+  width: 80%;
+}
+
+.input-busca{
+  background-color: #FFFFFF;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  padding: 1vh 1vw 1vh 1vw;
+  width: 100%;
+}
+
+.resultadobusca{
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+}

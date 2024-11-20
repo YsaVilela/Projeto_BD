@@ -1,0 +1,75 @@
+<section class="listar-profissionais">
+  <div class="filtros">
+    <div class="espaco-titulo">
+      <div class="icone-filtro"></div>
+      <p class="titulo-filtro">Filtro</p>
+    </div>
+    <div class="campo">
+      <input
+        type="checkbox"
+        class="input"
+        id="nome"
+        name="nome"
+        [(ngModel)]="nomeCheck"
+        (change)="onCheckboxChange('nome')"
+      />
+      <label for="nome">Nome</label>
+    </div>
+
+    <div class="campo">
+      <input
+        type="checkbox"
+        class="input"
+        id="cpf"
+        name="cpf"
+        [(ngModel)]="cpfCheck"
+        (change)="onCheckboxChange('cpf')"
+      />
+      <label for="cpf">CPF</label>
+    </div>
+    <div class="campo">
+      <input
+        type="checkbox"
+        class="input"
+        id="cargo"
+        name="cargo"
+        [(ngModel)]="cargoCheck"
+        (change)="onCheckboxChange('cargo')"
+      />
+      <label for="cargo">Cargo</label>
+    </div>
+    <div class="campo">
+      <input
+        type="checkbox"
+        class="input"
+        id="id"
+        name="id"
+        [(ngModel)]="idCheck"
+        (change)="onCheckboxChange('id')"
+      />
+      <label for="id">ID</label>
+    </div>
+  </div>
+  <div class="conteudo">
+    <header>
+      <p class="titulo">Colaboradores</p>
+    </header>
+    <div class="campo-busca">
+      <input
+        type="text"
+        class="input-busca"
+        placeholder="Digite sua busca..."
+        [(ngModel)]="filtro"
+        (keyup)="pesquisarProfissional()"
+      />
+    </div>
+    <div class="resultadobusca">
+      <div *ngFor="let profissional of listaProfissionais">
+        <app-profissional [profissional]="profissional"></app-profissional>
+      </div>
+    </div>
+    <div *ngIf="listaProfissionais.length == 0">
+      <p>Nenhum profissional encontrado</p>
+    </div>
+  </div>
+</section>

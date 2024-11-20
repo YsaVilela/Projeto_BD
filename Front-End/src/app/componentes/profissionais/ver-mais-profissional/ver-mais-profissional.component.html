@@ -1,0 +1,87 @@
+<section class="dados-profissional">
+  <div class="dados" *ngIf="mensagemDeErro == null">
+    <div class="dados-inicial">
+      <div class="foto-profissional"></div>
+      <div class="nome">{{ profissional.pessoa.nome }}</div>
+      <div class="cargo-profissional">
+        <div class="icone-cargo"></div>
+        <div class="cargo">{{ profissional.cargo.nome }}</div>
+      </div>
+      <div class="cpf-profissional">
+        <div class="icone-cpf"></div>
+        <div class="cpf">{{ profissional.cpf }}</div>
+      </div>
+      <div class="aniversario-profissional">
+        <div class="icone-aniversario"></div>
+        <div class="data">
+          {{ profissional.pessoa.dataDeConstituicao | date : "dd/MM/yyyy" }}
+        </div>
+      </div>
+      <div class="id">ID: {{ profissional.id }}</div>
+    </div>
+    <div class="dados-pessoa">
+      <div class="dados-contato">
+        <div class="espaco-titulo">
+          <div class="icone-contato"></div>
+          <p class="titulo-campo">Contato</p>
+        </div>
+        <div class="email-profissional">
+          <div class="icone-email"></div>
+          <div class="email">{{ profissional.pessoa.email }}</div>
+        </div>
+        <div class="telefone-profissional">
+          <div class="icone-telefone"></div>
+          <div class="telefone">{{ profissional.pessoa.telefone }}</div>
+        </div>
+      </div>
+      <div class="dados-endereco">
+        <div class="espaco-titulo">
+          <div class="icone-dados-endereco"></div>
+          <p class="titulo-campo">Dados Endereço</p>
+        </div>
+        <div class="cep">CEP: {{ profissional.pessoa.endereco.cep }}</div>
+        <div class="logradouro">
+          Logradouro:
+          {{ profissional.pessoa.endereco.logradouro }}
+        </div>
+        <div class="detalhes-endereco">
+          <div class="numero">
+            Número: {{ profissional.pessoa.endereco.numero }}
+          </div>
+          <div class="complemento">
+            Complemento:
+            {{ profissional.pessoa.endereco.complemento }}
+          </div>
+        </div>
+        <div class="estado">
+          Estado:
+          {{ profissional.pessoa.endereco.cidade.estado.nome }}
+        </div>
+        <div class="cidade">
+          Cidade: {{ profissional.pessoa.endereco.cidade.nome }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mensagem-pessoa-nao-encontrada" *ngIf="mensagemDeErro != null">{{ mensagemDeErro }}</div>
+  <div class="botoes">
+    <button
+      *ngIf="mensagemDeErro == null"
+      class="btnAcoes"
+      routerLink="/atualizarProfissional/{{ profissional.id }}"
+    >
+      Editar
+    </button>
+    <button
+      class="btnAcoes"
+      *ngIf="mensagemDeErro == null"
+      (click)="desativar()"
+    >
+      Desativar
+    </button>
+    <button class="btnAcoes" *ngIf="mensagemDeErro == null" (click)="excluir()">
+      Excluir
+    </button>
+    <button class="btnAcoes" routerLink="/listarEmpregados">Voltar</button>
+  </div>
+</section>

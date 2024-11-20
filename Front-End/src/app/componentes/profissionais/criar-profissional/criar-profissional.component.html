@@ -1,0 +1,352 @@
+<section class="criar-profissional">
+  <header>
+    <p class="titulo">Cadastrar novo profissional</p>
+  </header>
+
+  <div class="tipo-cadastro">
+    <div class="espaco-titulo">
+      <div class="icone-tipo-cadastro"></div>
+      <p class="titulo-campo">Tipo de cadastro</p>
+    </div>
+    <form>
+      <input
+        type="checkbox"
+        class="input"
+        id="pessoaFisica"
+        name="pessoaFisica"
+        [(ngModel)]="pessoaFisicaCheck"
+        (change)="onCheckboxChange('pessoaFisica')"
+      />
+      <label for="pessoaFisica">Pessoa Física</label>
+
+      <input
+        type="checkbox"
+        class="input"
+        id="pessoaJuridica"
+        name="pessoaJuridica"
+        [(ngModel)]="pessoaJuridicaCheck"
+        (change)="onCheckboxChange('pessoaJuridica')"
+      />
+      <label for="pessoaJuridica">Pessoa Jurídica</label>
+    </form>
+  </div>
+
+  <div class="dados">
+    <div class="dados-pessoa">
+      <div class="espaco-titulo">
+        <div class="icone-dados-pessoa"></div>
+        <p class="titulo-campo">Dados Pessoais</p>
+      </div>
+      <form class="formulario" [formGroup]="formularioPessoa">
+        <div class="campo">
+          <label class="label-input" for="nome">Nome</label>
+          <input
+            type="textarea"
+            class="input"
+            id="nome"
+            formControlName="nome"
+            placeholder="Digite o nome"
+          />
+        </div>
+        <div
+          class="mensagem__erro"
+          *ngIf="
+            formularioPessoa.get('nome')?.errors?.['required'] &&
+            formularioPessoa.get('nome')?.touched
+          "
+        >
+          Nome é obrigatório!
+        </div>
+        <div
+          class="mensagem__erro"
+          *ngIf="formularioPessoa.get('nome')?.errors?.['pattern'] "
+        >
+          Nome não pode conter números ou caracter especial.
+        </div>
+
+        <div class="campo">
+          <label class="label-input" for="dataDeConstituicao"
+            >Data de Constituicao</label
+          >
+          <input
+            type="textarea"
+            class="input"
+            id="dataDeConstituicao"
+            formControlName="dataDeConstituicao"
+            placeholder="Digite a data de nascimento/criação"
+          />
+        </div>
+        <div
+          class="mensagem__erro"
+          *ngIf="formularioPessoa.get('dataDeConstituicao')?.errors?.['required'] && formularioPessoa.get('dataDeConstituicao')?.touched"
+        >
+          Data é obrigatório!
+        </div>
+        <div
+          class="mensagem__erro"
+          *ngIf="formularioPessoa.get('dataDeConstituicao')?.errors?.['pattern'] "
+        >
+          Formtação esperada 09/02/2024.
+        </div>
+
+        <div class="campo">
+          <label class="label-input" for="email">Email</label>
+          <input
+            type="textarea"
+            class="input"
+            id="email"
+            formControlName="email"
+            placeholder="Digite o email"
+          />
+        </div>
+        <div
+          class="mensagem__erro"
+          *ngIf="formularioPessoa.get('email')?.errors?.['required'] && formularioPessoa.get('email')?.touched"
+        >
+          Email é obrigatório!
+        </div>
+        <div
+          class="mensagem__erro"
+          *ngIf="formularioPessoa.get('email')?.errors?.['pattern'] "
+        >
+          Formato esperado testeemail.com.
+        </div>
+
+        <div class="campo">
+          <label class="label-input" for="telefone">Telefone</label>
+          <input
+            type="textarea"
+            class="input"
+            id="telefone"
+            formControlName="telefone"
+            placeholder="Digite o telefone"
+          />
+        </div>
+        <div
+          class="mensagem__erro"
+          *ngIf="formularioPessoa.get('telefone')?.errors?.['required'] && formularioPessoa.get('telefone')?.touched"
+        >
+          Telefone é obrigatório!
+        </div>
+        <div
+          class="mensagem__erro"
+          *ngIf="formularioPessoa.get('telefone')?.errors?.['pattern'] "
+        >
+          Formato esperado (xx)xxxxx-xxxx
+        </div>
+
+        <form [formGroup]="formularioPessoaFisica" *ngIf="pessoaFisicaCheck">
+          <div class="campo">
+            <label class="label-input" for="cpf">Cpf</label>
+            <input
+              type="textarea"
+              class="input"
+              id="cpf"
+              formControlName="cpf"
+              placeholder="Digite o cpf"
+            />
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoaFisica.get('cpf')?.errors?.['required'] && formularioPessoaFisica.get('cpf')?.touched"
+          >
+            Cpf é obrigatório!
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoaFisica.get('cpf')?.errors?.['pattern'] "
+          >
+            Formato esperado xxx.xxx.xxx-xx
+          </div>
+
+          <div formGroupName="cargo">
+            <div class="campo">
+              <label class="label-input" for="cargo">Cargo</label>
+              <select class="input" id="cargo" formControlName="nome">
+                <option *ngFor="let cargo of cargos" [value]="cargo.nome">
+                  {{ cargo.nome }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoaFisica.get('cargo.nome')?.errors?.['required'] && formularioPessoaFisica.get('cargo.nome')?.touched"
+          >
+            Cargo é obrigatório!
+          </div>
+        </form>
+
+        <form
+          [formGroup]="formularioPessoaJuridica"
+          *ngIf="pessoaJuridicaCheck"
+        >
+          <div class="campo">
+            <label class="label-input" for="cnpj">Cnpj</label>
+            <input
+              type="textarea"
+              class="input"
+              id="cnpj"
+              formControlName="cnpj"
+              placeholder="Digite o cnpj"
+            />
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoaJuridica.get('cnpj')?.errors?.['required'] && formularioPessoaJuridica.get('cnpj')?.touched"
+          >
+            Cnpj é obrigatório!
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoaJuridica.get('cnpj')?.errors?.['pattern'] "
+          >
+            Formato esperado xx.xxx.xxx/xxxx-xx
+          </div>
+        </form>
+      </form>
+    </div>
+    <div class="dados-endereco">
+      <div class="espaco-titulo">
+        <div class="icone-dados-endereco"></div>
+        <p class="titulo-campo">Dados Endereço</p>
+      </div>
+      <form [formGroup]="formularioPessoa">
+        <div formGroupName="endereco" class="campos-endereco">
+          <div class="campo">
+            <label class="label-input" for="cep">CEP</label>
+            <input
+              type="textarea"
+              class="input"
+              id="cep"
+              formControlName="cep"
+              placeholder="Digite o CEP"
+            />
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoa.get('endereco.cep')?.errors?.['required'] && formularioPessoa.get('endereco.cep')?.touched"
+          >
+            CEP é obrigatório!
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoa.get('endereco.cep')?.errors?.['pattern'] "
+          >
+            Formato esperado xxxxx-xxx
+          </div>
+
+          <div class="campo">
+            <label class="label-input" for="logradouro">Logradouro</label>
+            <input
+              type="textarea"
+              class="input"
+              id="logradouro"
+              formControlName="logradouro"
+              placeholder="Digite o logradouro"
+            />
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoa.get('endereco.logradouro')?.errors?.['required'] && formularioPessoa.get('endereco.logradouro')?.touched"
+          >
+            Logradouro é obrigatório!
+          </div>
+
+          <div class="campo">
+            <label class="label-input" for="numero">Numero</label>
+            <input
+              type="textarea"
+              class="input"
+              id="numero"
+              formControlName="numero"
+              placeholder="Digite o numero da casa ou empresa"
+            />
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoa.get('endereco.numero')?.errors?.['required'] && formularioPessoa.get('endereco.numero')?.touched"
+          >
+            Número do endereço é obrigatório!
+          </div>
+
+          <div class="campo">
+            <label class="label-input" for="complemento">Complemento</label>
+            <input
+              type="textarea"
+              class="input"
+              id="complemento"
+              formControlName="complemento"
+              placeholder="Digite o complemento"
+            />
+          </div>
+
+          <div formGroupName="cidade">
+            <div formGroupName="estado">
+              <div class="campo">
+                <label class="label-input" for="uf">UF</label>
+                <select
+                  class="input"
+                  id="uf"
+                  formControlName="uf"
+                  (change)="pesquisarCidades()"
+                >
+                  <option *ngFor="let estado of estados" [value]="estado.uf">
+                    {{ estado.uf }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div
+              class="mensagem__erro"
+              *ngIf="formularioPessoa.get('endereco.cidade.estado.uf')?.errors?.['required'] && formularioPessoa.get('endereco.cidade.estado.uf')?.touched"
+            >
+              UF do estado é obrigatório!
+            </div>
+          </div>
+
+          <div formGroupName="cidade">
+            <div class="campo">
+              <label class="label-input" for="cidade">Cidade</label>
+              <select class="input" id="cidade" formControlName="nome">
+                <option *ngFor="let cidade of cidades" [value]="cidade.nome">
+                  {{ cidade.nome }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoa.get('endereco.cidade.nome')?.errors?.['required'] && formularioPessoa.get('endereco.cidade.nome')?.touched"
+          >
+            Cidade é obrigatório!
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="erro-duplicidade" *ngIf="mensagemDeErro != null">
+    <p id="mensagem-de-erro">{{ mensagemDeErro }}</p>
+  </div>
+  <div class="botoes">
+    <button
+      class="btnConcluir"
+      (click)="cadastrar()"
+      [disabled]="
+        !pessoaFisicaCheck &&
+        !pessoaJuridicaCheck &&
+        !formularioPessoaFisica.valid &&
+        !formularioPessoaJuridica.valid
+      "
+      [ngClass]="{
+        btnDesativado:
+          (!pessoaFisicaCheck && !pessoaJuridicaCheck) ||
+          (pessoaFisicaCheck && !formularioPessoaFisica.valid) ||
+          (pessoaJuridicaCheck && !formularioPessoaJuridica.valid)
+      }"
+    >
+      Concluir
+    </button>
+    <button class="btnVoltar" routerLink="/home">Voltar</button>
+  </div>
+</section>

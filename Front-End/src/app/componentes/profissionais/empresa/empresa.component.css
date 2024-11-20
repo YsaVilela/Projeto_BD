@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Protest+Strike&display=swap");
+
+.cardEmpresa {
+  align-items: center;
+  background-color: #c2c2c2f1;
+  border-radius: 5%;
+  display: flex;
+  font-family: "Inconsolata", monospace;
+  font-size: 1rem;
+  flex-direction: column;
+  gap: 3%;
+  height: auto;
+  width: 225px;
+  margin: 1vh 1vw 1vh 1vw;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.foto-empresa {
+  aspect-ratio: 1;
+  content: url("../../../../assets/imagens/icons/icone-foto-perfil.svg");
+  background-color: #ffffff;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  width: 80px;
+}
+
+.nome-empresa {
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.data {
+  color: #000000;
+}
+
+.aniversario-empresa,
+.cnpj-empresa,
+.email-empresa,
+.telefone-empresa {
+  display: flex;
+  gap: 5px;
+  width: 80%;
+  justify-content: center;
+  word-wrap: break-word;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.email {
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.btn-ver-mais {
+  color: #000080;
+  text-decoration: underline;
+  padding: 10px;
+}
+

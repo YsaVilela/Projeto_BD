@@ -1,0 +1,275 @@
+<section class="editar-profissional">
+  <header>
+    <p class="titulo">Editar cadastro do profissional</p>
+  </header>
+
+  <div class="dados" *ngIf="pessoaNaoEncontrada == null">
+    <div class="dados-pessoa">
+      <div class="espaco-titulo">
+        <div class="icone-dados-pessoa"></div>
+        <p class="titulo-campo">Dados Pessoais</p>
+      </div>
+      <form class="formulario" [formGroup]="formularioPessoaFisica">
+        <div formGroupName="pessoa" class="campos-endereco">
+          <div class="campo">
+            <label class="label-input" for="nome">ID</label>
+            <p class="numeroId">
+              {{ formularioPessoaFisica.get("id")?.value }}
+            </p>
+          </div>
+
+          <div class="campo">
+            <label class="label-input" for="nome">Nome</label>
+            <input
+              type="textarea"
+              class="input"
+              id="nome"
+              formControlName="nome"
+              placeholder="Digite o nome"
+            />
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="
+            formularioPessoaFisica.get('pessoa.nome')?.errors?.['required'] &&
+            formularioPessoaFisica.get('pessoa.nome')?.touched
+          "
+          >
+            Nome é obrigatório!
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoaFisica.get('pessoa.nome')?.errors?.['pattern'] "
+          >
+            Nome não pode conter números ou caracter especial.
+          </div>
+
+          <div class="campo">
+            <label class="label-input" for="data-constituicao"
+              >Data de Constituicao</label
+            >
+            <input
+              type="textarea"
+              class="input"
+              id="data-constituicao"
+              formControlName="dataDeConstituicao"
+              placeholder="Digite a data de nascimento/criação"
+            />
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoaFisica.get('pessoa.dataDeConstituicao')?.errors?.['required'] && formularioPessoaFisica.get('pessoa.dataDeConstituicao')?.touched"
+          >
+            Data é obrigatório!
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoaFisica.get('pessoa.dataDeConstituicao')?.errors?.['pattern'] "
+          >
+            Formtação esperada 09/02/2024.
+          </div>
+
+          <div class="campo">
+            <label class="label-input" for="email">Email</label>
+            <input
+              type="textarea"
+              class="input"
+              id="email"
+              formControlName="email"
+              placeholder="Digite o email"
+            />
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoaFisica.get('pessoa.email')?.errors?.['required'] && formularioPessoaFisica.get('pessoa.email')?.touched"
+          >
+            Email é obrigatório!
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoaFisica.get('pessoa.email')?.errors?.['pattern'] "
+          >
+            Formato esperado testeemail.com.
+          </div>
+
+          <div class="campo">
+            <label class="label-input" for="telefone">Telefone</label>
+            <input
+              type="textarea"
+              class="input"
+              id="telefone"
+              formControlName="telefone"
+              placeholder="Digite o telefone"
+            />
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoaFisica.get('pessoa.telefone')?.errors?.['required'] && formularioPessoaFisica.get('pessoa.telefone')?.touched"
+          >
+            Telefone é obrigatório!
+          </div>
+          <div
+            class="mensagem__erro"
+            *ngIf="formularioPessoaFisica.get('pessoa.telefone')?.errors?.['pattern'] "
+          >
+            Formato esperado 11912345678
+          </div>
+        </div>
+        <div formGroupName="cargo">
+          <div class="campo">
+            <label class="label-input" for="cargo">Cargo</label>
+            <select class="input" id="cargo" formControlName="nome">
+              <option *ngFor="let cargo of cargos" [value]="cargo.nome">
+                {{ cargo.nome }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label class="label-input" for="cpf">Cpf</label>
+          <input
+            type="textarea"
+            class="input"
+            id="cpf"
+            formControlName="cpf"
+            placeholder="Digite o cpf"
+          />
+        </div>
+      </form>
+    </div>
+
+    <div class="dados-endereco">
+      <div class="espaco-titulo">
+        <div class="icone-dados-endereco"></div>
+        <p class="titulo-campo">Dados Endereço</p>
+      </div>
+      <form [formGroup]="formularioPessoaFisica">
+        <div formGroupName="pessoa">
+          <div formGroupName="endereco" class="campos-endereco">
+            <div class="campo">
+              <label class="label-input" for="cep">CEP</label>
+              <input
+                type="textarea"
+                class="input"
+                id="cep"
+                formControlName="cep"
+                placeholder="Digite o CEP"
+              />
+            </div>
+            <div
+              class="mensagem__erro"
+              *ngIf="formularioPessoaFisica.get('pessoa.endereco.cep')?.errors?.['required'] && formularioPessoaFisica.get('pessoa.endereco.cep')?.touched"
+            >
+              CEP é obrigatório!
+            </div>
+            <div
+              class="mensagem__erro"
+              *ngIf="formularioPessoaFisica.get('pessoa.endereco.cep')?.errors?.['pattern'] "
+            >
+              Formato esperado 00000000
+            </div>
+
+            <div class="campo">
+              <label class="label-input" for="logradouro">Logradouro</label>
+              <input
+                type="textarea"
+                class="input"
+                id="logradouro"
+                formControlName="logradouro"
+                placeholder="Digite o logradouro"
+              />
+            </div>
+            <div
+              class="mensagem__erro"
+              *ngIf="formularioPessoaFisica.get('pessoa.endereco.logradouro')?.errors?.['required'] && formularioPessoaFisica.get('pessoa.endereco.logradouro')?.touched"
+            >
+              Logradouro é obrigatório!
+            </div>
+
+            <div class="campo">
+              <label class="label-input" for="numero">Numero</label>
+              <input
+                type="textarea"
+                class="input"
+                id="numero"
+                formControlName="numero"
+                placeholder="Digite o numero da casa ou empresa"
+              />
+            </div>
+            <div
+              class="mensagem__erro"
+              *ngIf="formularioPessoaFisica.get('pessoa.endereco.numero')?.errors?.['required'] && formularioPessoaFisica.get('pessoa.endereco.numero')?.touched"
+            >
+              Número do endereço é obrigatório!
+            </div>
+
+            <div class="campo">
+              <label class="label-input" for="complemento">Complemento</label>
+              <input
+                type="textarea"
+                class="input"
+                id="complemento"
+                formControlName="complemento"
+                placeholder="Digite o complemento"
+              />
+            </div>
+
+            <div formGroupName="cidade" class="campos-endereco">
+              <div formGroupName="estado">
+                <div class="campo">
+                  <label class="label-input" for="estado">Estado</label>
+                  <select
+                    class="input"
+                    id="uf"
+                    formControlName="uf"
+                    (change)="pesquisarCidades()"
+                  >
+                    <option *ngFor="let estado of estados" [value]="estado.uf">
+                      {{ estado.uf }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div
+                class="mensagem__erro"
+                *ngIf="formularioPessoaFisica.get('pessoa.endereco.cidade.estado.uf')?.errors?.['required'] && formularioPessoaFisica.get('pessoa.endereco.cidade.estado.uf')?.touched"
+              >
+                UF do estado é obrigatório!
+              </div>
+              <div
+                class="mensagem__erro"
+                *ngIf="formularioPessoaFisica.get('pessoa.endereco.cidade.estado.uf')?.errors?.['pattern'] "
+              >
+                Estado não encontrado
+              </div>
+
+              <div class="campo">
+                <label class="label-input" for="cidade">Cidade</label>
+                <select class="input" id="cidade" formControlName="nome">
+                  <option *ngFor="let cidade of cidades" [value]="cidade.nome">
+                    {{ cidade.nome }}
+                  </option>
+                </select>
+              </div>
+              <div
+                class="mensagem__erro"
+                *ngIf="formularioPessoaFisica.get('pessoa.endereco.cidade.nome')?.errors?.['required'] && formularioPessoaFisica.get('pessoa.endereco.cidade.nome')?.touched"
+              >
+                Cidade é obrigatório!
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="erro-duplicidade" *ngIf="mensagemDeErro != null">
+    <p id="mensagem-de-erro">{{ mensagemDeErro }}</p>
+  </div>
+  <div class="mensagem-pessoa-nao-encontrada" *ngIf="pessoaNaoEncontrada != null">{{ pessoaNaoEncontrada }}</div>
+  <div class="botoes">
+    <button class="btnConcluir" *ngIf="pessoaNaoEncontrada == null" (click)="cadastrar()">Concluir</button>
+    <button class="btnVoltar" routerLink="/listarEmpregados">Voltar</button>
+  </div>
+</section>

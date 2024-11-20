@@ -1,0 +1,58 @@
+header {
+  align-items: center;
+  background: url(../../../assets/imagens/fundo-cabecalho.png);
+  background-size: cover;
+  color: #ffffff;
+  display: grid;
+  grid-template-areas: "logo . btCadastrarProfissional btCadstrarCargo btBuscarFuncionario btBuscarEmpresa btBuscarCargo . btHome";
+  grid-template-columns: 30vw auto 12vw 12vw 12vw 12vw 12vw 2vw 0;
+  height: 15vh;
+  overflow: hidden;
+  width: 100%;
+}
+
+header .logo {
+  grid-area: logo;
+  padding-left: 1vw;
+}
+
+header .botaoCadastrarProfissional {
+  grid-area: btCadastrarProfissional;
+}
+
+header .botaoCadastrarCargo {
+  grid-area: btCadstrarCargo;
+}
+
+header .botaoListarEmpregados {
+  grid-area: btBuscarFuncionario;
+}
+
+header .botaoListarEmpresas {
+  grid-area: btBuscarEmpresa;
+}
+
+header .botaoListarCargos {
+  grid-area: btBuscarCargo;
+}
+
+header .botaoHome {
+  grid-area: btHome;
+}
+
+@media (max-width: 768px) {
+  header {
+    height: 10vh;
+    grid-template-areas: "logo . btHome .";
+    grid-template-columns: 30vw auto 12vw 5vw;
+  }
+
+  .botaoHome {
+    grid-area: btHome;
+    display: block;
+  }
+
+  .botaoCadastrarProfissional, .botaoCadastrarCargo, .botaoListarEmpregados, .botaoListarEmpresas, .botaoListarCargos{
+    display: none;
+  }
+}

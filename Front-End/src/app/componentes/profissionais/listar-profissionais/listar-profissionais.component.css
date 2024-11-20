@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Protest+Strike&display=swap");
+
+.listar-profissionais {
+  display: grid;
+  grid-template-areas: "filtros conteudo";
+  grid-template-columns: 10% 90%;
+  height: 100%;
+}
+
+.filtros {
+  background-color: #000080;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  font-family: "Inconsolata", monospace;
+  display: flex;
+  flex-direction: column;
+  grid-area: filtros;
+  height: 100%;
+}
+
+.espaco-titulo{
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.titulo-filtro {
+  font-family: "Inconsolata", monospace;
+  font-size: 15px;
+}
+
+.conteudo {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  grid-area: conteudo;
+  height: auto;
+  padding: 1vh 1vw 1vh 1vw;
+  overflow-x: hidden;
+  width: 98%;
+}
+
+.campo-busca {
+  width: 80%;
+}
+
+.input-busca {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  padding: 1vh 1vw 1vh 1vw;
+  width: 100%;
+}
+
+.resultadobusca {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+}

@@ -1,0 +1,69 @@
+<section class="criar-cargo">
+  <header>
+    <p class="titulo">Cadastrar novo cargo</p>
+  </header>
+
+  <div class="dados-cargo">
+    <div class="espaco-titulo-cargo">
+      <div class="icone-dados-cargo"></div>
+      <p class="titulo-campo">Dados Cargo</p>
+    </div>
+    <form class="formulario" [formGroup]="formularioCargo">
+      <div class="campo">
+        <label class="label-input" for="nome">Nome</label>
+        <input
+          type="textarea"
+          class="input"
+          id="nome"
+          formControlName="nome"
+          placeholder="Digite o nome"
+        />
+      </div>
+      <div
+      class="mensagem__erro"
+      *ngIf="formularioCargo.get('nome')?.errors?.['required'] && formularioCargo.get('nome')?.touched"
+    >
+      Nome do cargo é obrigatório!
+    </div>
+
+      <div class="campo">
+        <label class="label-input" for="remuneracao">Remuneração</label>
+        <input
+          type="textarea"
+          class="input"
+          id="remuneracao"
+          formControlName="remuneracao"
+          placeholder="Digite a remuneracao do cargo"
+        />
+      </div>
+      <div
+        class="mensagem__erro"
+        *ngIf="formularioCargo.get('remuneracao')?.errors?.['required'] && formularioCargo.get('remuneracao')?.touched"
+      >
+        Remuneração é obrigatória!
+      </div>
+      <div
+        class="mensagem__erro"
+        *ngIf="formularioCargo.get('remuneracao')?.errors?.['pattern'] "
+      >
+        Formato esperado 1400.00
+      </div>
+    </form>
+  </div>
+  <div class="erro-duplicidade" *ngIf="mensagemDeErro != null">
+    <p id="mensagem-de-erro">{{ mensagemDeErro }}</p>
+  </div>
+  <div class="botoes">
+    <button
+      class="btnConcluir"
+      (click)="cadastrar()"
+      [disabled]="!formularioCargo.valid"
+      [ngClass]="{
+        btnDesativado: !formularioCargo.valid
+      }"
+    >
+      Concluir
+    </button>
+    <button class="btnVoltar" routerLink="/home">Voltar</button>
+  </div>
+</section>

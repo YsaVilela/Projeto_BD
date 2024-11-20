@@ -1,0 +1,17 @@
+<div class="cardCargo">
+  <div class="nome-cargo">{{ cargo.nome }}</div>
+  <div class="botao-alteracoes">
+    <button
+      class="icone-editar"
+      routerLink="/atualizarCargo/{{ cargo.id }}"
+    ></button>
+    <button class="icone-lixeira" (click)="excluir()"></button>
+  </div>
+</div>
+
+<div class="modal-erro" *ngIf="mensagemDeErro != null">
+  <div class="modal-content">
+    <p>{{ mensagemDeErro }}</p>
+    <button routerLink="/listarCargos">OK</button>
+  </div>
+</div>

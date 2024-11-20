@@ -1,0 +1,26 @@
+<div class="cardProfissional">
+  <div class="nome-cargo">{{ profissional.cargo.nome}}</div>
+  <div class="foto-profissional"></div>
+  <div class="nome-profissional">{{ profissional.pessoa.nome }}</div>
+  <div class="aniversario-profissional">
+    <div class="icone-aniversario"></div>
+    <div class="data">{{ profissional.pessoa.dataDeConstituicao | date:'dd/MM/yyyy' }} </div>
+  </div>
+  <div class="cpf-profissional">
+    <div class="icone-cpf"></div>
+    <div class="cpf">{{ profissional.cpf }}</div>
+  </div>
+  <div class="email-profissional">
+    <div class="icone-email"></div>
+    <div class="email">{{ profissional.pessoa.email }}</div>
+  </div>
+  <div class="telefone-profissional">
+    <div class="icone-telefone"></div>
+    <div class="telefone">{{ profissional.pessoa.telefone }}</div>
+  </div>
+  <button class="btn-ver-mais" routerLink="/dadosProfissional/{{profissional.id}}">Ver mais</button>
+  <div class="botao-alteracoes">
+    <button class="icone-editar" routerLink="/atualizarProfissional/{{profissional.id}}"></button>
+    <button class="icone-lixeira" (click)="excluir()"></button>
+  </div>
+</div>

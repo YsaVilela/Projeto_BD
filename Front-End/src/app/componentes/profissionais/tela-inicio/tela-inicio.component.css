@@ -1,0 +1,37 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
+  gap: 5vh;
+}
+
+.botoes{
+  display: flex;
+  gap: 5vw;
+  flex-wrap: wrap;
+  width: 60%;
+  align-items: center;
+  justify-content: center;
+}
+
+.btTelaPrincipal{
+  width: 15vw;
+  height: 15vh;
+  background-color: #000080;
+  color: #FFFFFF;
+  border-radius: 2vh;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .botoes{
+    width: 80%;
+  }
+  .btTelaPrincipal{
+    width: 100px;
+    height: 60px;
+    font-size: 8px;
+  }
+}

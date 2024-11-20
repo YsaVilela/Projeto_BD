@@ -1,0 +1,42 @@
+.listar-cargos {
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  padding: 1vh 1vw 1vh 1vw;
+  width: 98%;
+}
+
+.campo-busca{
+  width: 80%;
+}
+
+.input-busca{
+  background-color: #FFFFFF;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  outline: none;
+  padding: 1vh 1vw 1vh 1vw;
+  width: 100%;
+}
+
+.resultado-busca{
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  width: 98%;
+}
+
+.cargo{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cargo-nao-encontrado{
+  margin-top: 3vh;
+}
+

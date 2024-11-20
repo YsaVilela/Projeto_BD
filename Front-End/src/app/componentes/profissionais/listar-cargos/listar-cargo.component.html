@@ -1,0 +1,20 @@
+<section class="listar-cargos">
+  <header>
+    <p class="titulo">Cargos</p>
+  </header>
+  <div class="campo-busca">
+    <input
+      type="text"
+      class="input-busca"
+      placeholder="Digite sua busca..."
+      [(ngModel)]="filtro"
+      (keyup)="pesquisarCargo()"
+    />
+  </div>
+  <div class="resultado-busca" *ngFor="let cargo of listaCargos">
+    <app-cargo class="cargo" [cargo]="cargo"></app-cargo>
+  </div>
+  <div class="cargo-nao-encontrado" *ngIf="listaCargos.length == 0">
+    <p>Nenhum cargo encontrado</p>
+  </div>
+</section>

@@ -1,0 +1,82 @@
+<section class="dados-empresa">
+  <div class="dados" *ngIf="mensagemDeErro == null">
+    <div class="dados-inicial">
+      <div class="foto-empresa"></div>
+      <div class="nome">{{ empresa.pessoa.nome }}</div>
+      <div class="cnpj-empresa">
+        <div class="icone-cpf"></div>
+        <div class="cnpj">{{ empresa.cnpj }}</div>
+      </div>
+      <div class="aniversario-empresa">
+        <div class="icone-aniversario"></div>
+        <div class="data">
+          {{ empresa.pessoa.dataDeConstituicao | date : "dd/MM/yyyy" }}
+        </div>
+      </div>
+    </div>
+    <div class="dados-pessoa">
+      <div class="dados-contato">
+        <div class="espaco-titulo">
+          <div class="icone-contato"></div>
+          <p class="titulo-campo">Contato</p>
+        </div>
+        <div class="email-empresa">
+          <div class="icone-email"></div>
+          <div class="email">{{ empresa.pessoa.email }}</div>
+        </div>
+        <div class="telefone-empresa">
+          <div class="icone-telefone"></div>
+          <div class="telefone">{{ empresa.pessoa.telefone }}</div>
+        </div>
+      </div>
+      <div class="dados-endereco">
+        <div class="espaco-titulo">
+          <div class="icone-dados-endereco"></div>
+          <p class="titulo-campo">Dados Endereço</p>
+        </div>
+        <div class="cep">CEP: {{ empresa.pessoa.endereco.cep }}</div>
+        <div class="logradouro">
+          Logradouro:
+          {{ empresa.pessoa.endereco.logradouro }}
+        </div>
+        <div class="detalhes-endereco">
+          <div class="numero">Número: {{ empresa.pessoa.endereco.numero }}</div>
+          <div class="complemento">
+            Complemento:
+            {{ empresa.pessoa.endereco.complemento }}
+          </div>
+        </div>
+        <div class="estado">
+          Estado:
+          {{ empresa.pessoa.endereco.cidade.estado.nome }}
+        </div>
+        <div class="cidade">
+          Cidade: {{ empresa.pessoa.endereco.cidade.nome }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mensagem-pessoa-nao-encontrada" *ngIf="mensagemDeErro != null">
+    {{ mensagemDeErro }}
+  </div>
+  <div class="botoes">
+    <button
+      class="btnAcoes"
+      *ngIf="mensagemDeErro == null"
+      routerLink="/atualizarEmpresa/{{ empresa.id }}"
+    >
+      Editar
+    </button>
+    <button
+      class="btnAcoes"
+      *ngIf="mensagemDeErro == null"
+      (click)="desativar()"
+    >
+      Desativar
+    </button>
+    <button class="btnAcoes" *ngIf="mensagemDeErro == null" (click)="excluir()">
+      Excluir
+    </button>
+    <button class="btnAcoes" routerLink="/listarEmpresas">Voltar</button>
+  </div>
+</section>

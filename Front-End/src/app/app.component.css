@@ -1,0 +1,22 @@
+main {
+  background-size: cover;
+  min-height: 75vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url('../assets/imagens/fundo-principal.jpg');
+  opacity: 0.5;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+}
+

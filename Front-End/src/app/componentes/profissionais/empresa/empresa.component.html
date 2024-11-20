@@ -1,0 +1,28 @@
+<div class="cardEmpresa">
+  <div class="foto-empresa"></div>
+  <div class="nome-empresa">{{ empresa.pessoa.nome }}</div>
+  <div class="aniversario-empresa">
+    <div class="icone-aniversario"></div>
+    <div class="data">{{ empresa.pessoa.dataDeConstituicao | date:'dd/MM/yyyy'}}</div>
+  </div>
+  <div class="cnpj-empresa">
+    <div class="icone-cpf"></div>
+    <div class="cnpj">{{ empresa.cnpj }}</div>
+  </div>
+  <div class="email-empresa">
+    <div class="icone-email"></div>
+    <div class="email">{{ empresa.pessoa.email }}</div>
+  </div>
+  <div class="telefone-empresa">
+    <div class="icone-telefone"></div>
+    <div class="telefone">{{ empresa.pessoa.telefone }}</div>
+  </div>
+  <button class="btn-ver-mais" routerLink="/dadosEmpresa/{{empresa.id}}">Ver mais</button>
+  <div class="botao-alteracoes">
+    <button
+      class="icone-editar"
+      routerLink="/atualizarEmpresa/{{ empresa.id }}"
+    ></button>
+    <button class="icone-lixeira" (click)="excluir()"></button>
+  </div>
+</div>

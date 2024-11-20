@@ -1,0 +1,22 @@
+<section class="listar-empresas">
+  <header>
+    <p class="titulo">Empresas</p>
+  </header>
+  <div class="campo-busca">
+    <input
+      type="text"
+      class="input-busca"
+      placeholder="Digite sua busca..."
+      [(ngModel)]="filtro"
+      (keyup)="pesquisarEmpresa()"
+    />
+  </div>
+  <div class="resultadobusca">
+    <div *ngFor="let empresa of listaEmpresas">
+      <app-empresa [empresa]="empresa"></app-empresa>
+    </div>
+  </div>
+  <div *ngIf="listaEmpresas.length == 0">
+    <p>Nenhuma empresa encontrada</p>
+  </div>
+</section>

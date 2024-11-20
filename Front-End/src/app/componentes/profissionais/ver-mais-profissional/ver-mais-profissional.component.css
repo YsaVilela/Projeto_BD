@@ -1,0 +1,98 @@
+.dados-profissional {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 3vh 1vw 1vh 1vw;
+}
+
+.dados {
+  display: grid;
+  grid-template-areas: "dadosInicial . dadosPessoa";
+  grid-template-columns: 30% auto 68%;
+  height: auto;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.dados-inicial {
+  align-items: center;
+  background-color: #c2c2c2f1;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  grid-area: dadosInicial;
+  padding: 2vh 1vw 1vh 1vw;
+}
+
+.dados-pessoa {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  gap: 55px;
+  grid-area: dadosPessoa;
+}
+
+.foto-profissional {
+  content: url("../../../../assets/imagens/icons/icone-foto-perfil.svg");
+  background-color: #ffffff;
+  border-radius: 50%;
+  width: 150px;
+  aspect-ratio: 1;
+  margin-bottom: 20px;
+}
+
+.cpf-profissional,
+.aniversario-profissional,
+.email-profissional,
+.telefone-profissional {
+  display: flex;
+  gap: 10px;
+}
+
+.nome,
+.cargo,
+.cpf,
+.data,
+.id,
+.email,
+.telefone,
+.cep,
+.logradouro,
+.estado,
+.cidade {
+  font-family: "Inconsolata", monospace;
+  margin: 5px 0 5px 0;
+  font-size: 14px;
+}
+
+.numero,
+.complemento{
+  font-family: "Inconsolata", monospace;
+  font-size: 14px;
+
+}
+
+.titulo-campo {
+  font-family: "Inconsolata", monospace;
+  margin: 5px 0 5px 0;
+  font-size: 20px;
+}
+
+.dados-contato,
+.dados-endereco {
+  background-color: #c2c2c2f1;
+  border-radius: 15px;
+  padding: 1vh 1vw 1vh 1vw;
+  width: 97%;
+}
+
+.detalhes-endereco {
+  display: flex;
+  gap: 40px;
+  height: min-content;
+}
+
+
